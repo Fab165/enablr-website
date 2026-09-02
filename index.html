@@ -4,6 +4,29 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Enablr . Build your own solutions with AI</title>
 <meta name="description" content="We help SMEs across APAC turn AI into working solutions, built and owned by their own teams. Mapping in 2 to 3 weeks, from S$4,000.">
+<!-- geo -->
+<link rel="alternate" hreflang="en-my" href="https://ai-enablr.com/my">
+<link rel="alternate" hreflang="x-default" href="https://ai-enablr.com/">
+<script>
+/* Malaysian visitors are sent to /my, which prices in MYR.
+   Timezone first, so the swap is instant; Cloudflare geo as the real check.
+   ?geo=0 opts out for the rest of the session. */
+(function(){
+  try{
+    if(location.search.indexOf('geo=0')>-1){sessionStorage.setItem('enablr-geo','0');return;}
+    if(sessionStorage.getItem('enablr-geo')==='0'){return;}
+  }catch(e){}
+  var go=function(){location.replace('/my');};
+  try{
+    if(Intl.DateTimeFormat().resolvedOptions().timeZone==='Asia/Kuala_Lumpur'){go();return;}
+  }catch(e){}
+  if(!window.fetch){return;}
+  fetch('/cdn-cgi/trace').then(function(r){return r.text();}).then(function(t){
+    if(/(^|\n)loc=MY(\n|$)/.test(t)){go();}
+  }).catch(function(){});
+})();
+</script>
+<!-- /geo -->
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Lora:ital@1&display=swap" rel="stylesheet">
 <style>
@@ -410,7 +433,7 @@ footer .col a{display:block;font-size:14px;color:var(--soft);padding:4px 0}
   <div class="wrap">
     <div class="reveal"><div class="kick">Pricing</div>
     <h2>Start with the mapping</h2>
-    <p class="lead wide">Every engagement starts the same way, with 2 to 3 weeks of mapping. You leave with a ranked list of projects, a target architecture, and the names of the people inside who can build them. It is yours to keep even if you stop there.</p></div>
+    <p class="lead wide">Every engagement starts with 2 to 3 weeks of mapping. It is yours to keep.</p></div>
     <div class="pgrid">
       <div class="pcard reveal d1">
         <div class="k2">The starting point</div>
